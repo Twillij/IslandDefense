@@ -5,11 +5,16 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class EnemyControllerScript : MonoBehaviour
 {
-    public GameObject target;
     public float moveSpeed;
     public float baseDamage;
 
+    private GameObject target;
     private Collider col;
+
+    public void SetTarget(GameObject target)
+    {
+        this.target = target;
+    }
 
     public void SeekTarget()
     {
@@ -20,10 +25,10 @@ public class EnemyControllerScript : MonoBehaviour
         }
 
         // look at the target
-        this.transform.LookAt(target.transform);
+        //this.transform.LookAt(target.transform);
 
         // calculate the direction from itself to the target
-        Vector3 dir = Vector3.Normalize(target.transform.position - this.transform.position);
+        Vector3 dir = Vector3.Normalize(target.transform.position - this.transform.position); //Debug.Log(dir);
 
         // translate the object towards the target
         transform.Translate(dir * moveSpeed * Time.deltaTime);
