@@ -17,15 +17,22 @@ public class EnemySpawnerScript : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        // set the spawn position
+        float inRadSqr = innerSpawnRadius * innerSpawnRadius;
+        float outRadSqr = outerSpawnRadius * outerSpawnRadius;
+        float distanceSqr = Random.Range(inRadSqr, outRadSqr);
+        float posXSqr = Random.Range(inRadSqr, distanceSqr);
+        float posZSqr = distanceSqr - inRadSqr;
+
+        // set spawn position
         Vector3 spawnPos;
-        spawnPos.x = Random.Range(innerSpawnRadius, outerSpawnRadius);
+        spawnPos.x = Mathf.Sqrt(posXSqr);
         spawnPos.y = this.transform.position.y;
-        spawnPos.z = Random.Range(innerSpawnRadius, outerSpawnRadius);
+        spawnPos.z = Mathf.Sqrt(posZSqr);
 
         // spawn the enemy and set its position
         GameObject newEnemy = Instantiate(enemy);
         newEnemy.transform.position = spawnPos;
+        newEnemy.GetComponent<EnemyControllerScript>().SetTarget(target);
     }
 
     private void OnValidate()
