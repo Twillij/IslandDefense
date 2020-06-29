@@ -26,6 +26,7 @@ public class EnemySpawnerScript : MonoBehaviour
         // spawn the enemy and set its position
         GameObject newEnemy = Instantiate(enemy);
         newEnemy.transform.position = spawnPos;
+        newEnemy.GetComponent<EnemyControllerScript>().target = target;
     }
 
     private void OnValidate()
