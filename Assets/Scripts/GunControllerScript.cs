@@ -45,6 +45,8 @@ public class GunControllerScript : MonoBehaviour
         {
             Ray ray = new Ray(this.transform.position, this.transform.forward);
             Physics.Raycast(ray);
+
+
         }
     }
 
