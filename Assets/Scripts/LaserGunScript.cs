@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LaserGunScript : MonoBehaviour
 {
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
-    //public Light impactLight;
     public Transform firePoint;
     public Transform endPoint;
+    public Image energyBar;
 
     public float damage = 10;
     public float maxAmmo = 100;
@@ -23,7 +24,6 @@ public class LaserGunScript : MonoBehaviour
         {
             lineRenderer.enabled = false;
             impactEffect.Stop();
-            //impactLight.enabled = true;
             return;
         }
 
@@ -31,10 +31,10 @@ public class LaserGunScript : MonoBehaviour
         {
             lineRenderer.enabled = true;
             impactEffect.Play();
-            //impactLight.enabled = true;
         }
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, endPoint.position);
+        energyBar.fillAmount = ammo / maxAmmo;
 
         Ray ray = new Ray(this.transform.position, this.transform.forward);
         RaycastHit[] hitObjects = Physics.RaycastAll(ray);
@@ -52,6 +52,7 @@ public class LaserGunScript : MonoBehaviour
     {
         ammo += rechargeRate;
         ammo = (ammo > maxAmmo) ? maxAmmo : ammo;
+        energyBar.fillAmount = ammo / maxAmmo;
     }
 
     private void OnValidate()
@@ -76,7 +77,6 @@ public class LaserGunScript : MonoBehaviour
         {
             lineRenderer.enabled = false;
             impactEffect.Play();
-            //impactLight.enabled = false;
         }
         else
         {
