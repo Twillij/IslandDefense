@@ -5,11 +5,14 @@ using UnityEngine.UI;
 
 public class LaserGunScript : MonoBehaviour
 {
+    public AudioSource laserSound;
+
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
     public Transform firePoint;
     public Transform endPoint;
     public Image energyBar;
+    public AudioClip sound;
 
     public float damage = 10;
     public float maxAmmo = 100;
@@ -35,6 +38,7 @@ public class LaserGunScript : MonoBehaviour
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, endPoint.position);
         energyBar.fillAmount = ammo / maxAmmo;
+        laserSound.PlayOneShot(sound);
 
         Ray ray = new Ray(this.transform.position, this.transform.forward);
         RaycastHit[] hitObjects = Physics.RaycastAll(ray);
@@ -65,6 +69,7 @@ public class LaserGunScript : MonoBehaviour
     private void Start()
     {
         ammo = maxAmmo;
+        
     }
 
     private void Update()
@@ -77,6 +82,7 @@ public class LaserGunScript : MonoBehaviour
         {
             lineRenderer.enabled = false;
             impactEffect.Play();
+            laserSound.Stop();
         }
         else
         {
