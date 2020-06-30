@@ -4,13 +4,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
-public class GunControllerScript : MonoBehaviour
+public class GunRotationScript : MonoBehaviour
 {
-    public float ammo = 5;
-    public float usageRate = 1;
-    public float recoveryRate = 0;
-    public bool automatic = false;
-
     private Quaternion defaultRotation;
     private Vector3 screenCentrePoint;
     private float sensitivity = 1000;
@@ -41,25 +36,6 @@ public class GunControllerScript : MonoBehaviour
         this.transform.rotation = Quaternion.RotateTowards(this.transform.rotation, newRotation, sensitivity * Time.deltaTime);
     }
 
-    private void Shoot()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            Ray ray = new Ray(this.transform.position, this.transform.forward);
-            Physics.Raycast(ray);
-
-
-        }
-    }
-
-    private void ProcessInput()
-    {
-        // rotate gun based on mouse position
-        RotateGun();
-
-
-    }
-
     private void Start()
     {
         SetScreenCentrePoint();
@@ -69,6 +45,6 @@ public class GunControllerScript : MonoBehaviour
 
     private void Update()
     {
-        ProcessInput();
+        RotateGun();
     }
 }
