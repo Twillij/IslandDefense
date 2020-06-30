@@ -25,13 +25,13 @@ public class EnemyControllerScript : MonoBehaviour
         }
 
         // look at the target
-        //this.transform.LookAt(target.transform);
+        this.transform.LookAt(target.transform);
 
         // calculate the direction from itself to the target
         Vector3 dir = Vector3.Normalize(target.transform.position - this.transform.position); //Debug.Log(dir);
 
         // translate the object towards the target
-        transform.Translate(dir * moveSpeed * Time.deltaTime);
+        this.transform.position += dir * moveSpeed * Time.deltaTime;
     }
 
     private void OnValidate()
