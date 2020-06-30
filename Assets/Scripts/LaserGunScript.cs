@@ -42,7 +42,7 @@ public class LaserGunScript : MonoBehaviour
         for (int i = 0; i < hitObjects.Length; ++i)
         {
             if (hitObjects[i].transform.CompareTag("Enemy"))
-                hitObjects[i].transform.GetComponent<EnemyControllerScript>().hp -= damage;
+                hitObjects[i].transform.GetComponent<EnemyControllerScript>().TakeDamage(damage);
         }
 
         ammo -= usageRate;
