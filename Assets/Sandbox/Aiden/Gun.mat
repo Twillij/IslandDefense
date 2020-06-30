@@ -24,7 +24,7 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: f892653d556053e4d8d521a08040799a,
     type: 3}
   m_ShaderKeywords: _BLENDMODE_ALPHA _DOUBLESIDED_ON _SURFACE_TYPE_TRANSPARENT
-  m_LightmapFlags: 4
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
   m_CustomRenderQueue: 3000
@@ -38,7 +38,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_2B0CDAF6:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8276e75394b0e644a9d0b8d8f123d240, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_85BC1B95:
@@ -50,7 +50,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_9474355:
-        m_Texture: {fileID: 2800000, guid: 148a77d957a4a7f4bb39d39df5b00593, type: 3}
+        m_Texture: {fileID: 2800000, guid: c42216f2169e4904dbddddc1959d02ca, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_E85F1E0:
@@ -142,18 +142,18 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_28D76CAA: 0.1
-    - Vector1_2C270DFA: 0
+    - Vector1_28D76CAA: 1.17
+    - Vector1_2C270DFA: 0.051
     - Vector1_3854AD39: 0
-    - Vector1_4AA9A45B: 445.95
-    - Vector1_587DCE02: 0.2
+    - Vector1_4AA9A45B: 68.5
+    - Vector1_587DCE02: 0.85
     - Vector1_6C32EEDD: 1
-    - Vector1_A3711179: 2
+    - Vector1_A3711179: 0
     - Vector1_A9CCE909: 0
     - Vector1_CCB758DF: 0
     - Vector1_DB84D617: 0.5
     - Vector1_E9766486: 1
-    - Vector1_F8FED60F: 0
+    - Vector1_F8FED60F: 19.9
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -276,8 +276,8 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - Color_76C55F0: {r: 0.5754717, g: 0.33388218, b: 0.36567026, a: 0}
-    - Color_AA026D60: {r: 0.35849056, g: 0.35849056, b: 0.35849056, a: 0}
+    - Color_76C55F0: {r: 0.2284176, g: 0.33552584, b: 0.5566038, a: 0}
+    - Color_AA026D60: {r: 0.3207547, g: 0.31318974, b: 0.31318974, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
