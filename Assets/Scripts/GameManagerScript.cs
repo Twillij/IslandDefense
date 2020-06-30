@@ -15,6 +15,8 @@ public class GameManagerScript : MonoBehaviour
     {
         level++;
         levelTimer = 10;
+        enemySpawner.enemyHPMultiplier = level + (level / 10) * level;
+        enemySpawner.spawnRateMultiplier = level;
         enemySpawner.timerOn = true;
         gameIsRunning = true;
     }
