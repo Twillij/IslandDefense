@@ -9,6 +9,8 @@ public class EnemyControllerScript : MonoBehaviour
     public float baseDamage = 0;
     public float scoreValue = 0;
 
+    public GameObject deathEffect;
+
     private GameObject target;
 
     public void SetTarget(GameObject target)
@@ -38,6 +40,7 @@ public class EnemyControllerScript : MonoBehaviour
     {
         ScoreManagerScript scoreKeeper = (ScoreManagerScript)FindObjectOfType(typeof(ScoreManagerScript));
         scoreKeeper.score += scoreValue;
+        GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 
