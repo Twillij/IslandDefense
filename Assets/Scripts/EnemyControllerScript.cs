@@ -5,8 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class EnemyControllerScript : MonoBehaviour
 {
-    public float moveSpeed;
-    public float baseDamage;
+    public float moveSpeed = 10;
+    public float baseDamage = 0;
+    public float scoreValue = 0;
 
     private GameObject target;
 
@@ -31,6 +32,13 @@ public class EnemyControllerScript : MonoBehaviour
 
         // translate the object towards the target
         this.transform.position += dir * moveSpeed * Time.deltaTime;
+    }
+
+    public void ShotDown()
+    {
+        ScoreManagerScript scoreKeeper = (ScoreManagerScript)FindObjectOfType(typeof(ScoreManagerScript));
+        scoreKeeper.score += scoreValue;
+        Destroy(this.gameObject);
     }
 
     private void OnValidate()
