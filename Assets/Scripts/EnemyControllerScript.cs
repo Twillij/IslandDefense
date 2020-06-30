@@ -74,8 +74,7 @@ public class EnemyControllerScript : MonoBehaviour
         if (other.transform.root.CompareTag("Player"))
         {
             target.GetComponent<PlayerScript>().ChangeLife(-1);
+            Destroy(this.gameObject);
         }
-
-        Destroy(this.gameObject);
     }
 }
