@@ -107,6 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0456abc582d5f2d429f904810b81cd0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathEffect: {fileID: 8741042865215973671, guid: c0b8ab2df6b32a549bd92f472fa758be,
+    type: 3}
+  hp: 100
   moveSpeed: 10
   baseDamage: 1
   scoreValue: 1
