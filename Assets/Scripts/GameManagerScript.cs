@@ -27,6 +27,11 @@ public class GameManagerScript : MonoBehaviour
         gameIsRunning = false;
     }
 
+    public void GameOver()
+    {
+        // to do: show a restart button
+    }
+
     private void Start()
     {
         enemySpawner = FindObjectOfType<EnemySpawnerScript>();
