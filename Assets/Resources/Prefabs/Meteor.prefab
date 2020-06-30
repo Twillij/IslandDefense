@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6082686297839577202}
   - component: {fileID: 528754723341653131}
   - component: {fileID: 7319167133655063131}
-  - component: {fileID: 7319167133655063130}
   - component: {fileID: 7319167133655063132}
+  - component: {fileID: 7319167133655063130}
   m_Layer: 0
   m_Name: Meteor
   m_TagString: Enemy
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 85a08a30f56201e488e0ec2f8f9c18c5, type: 2}
+  - {fileID: 2100000, guid: 602b6bc6ea55edc49ba21cc6d69a33c0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,24 +95,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.3387549
   m_Center: {x: -0.0017816424, y: 0.0003720224, z: -0.0050285757}
---- !u!114 &7319167133655063130
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2263715848923701335}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0456abc582d5f2d429f904810b81cd0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathEffect: {fileID: 8741042865215973671, guid: c0b8ab2df6b32a549bd92f472fa758be,
-    type: 3}
-  hp: 100
-  moveSpeed: 10
-  baseDamage: 1
-  scoreValue: 1
 --- !u!54 &7319167133655063132
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,3 +111,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7319167133655063130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2263715848923701335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0456abc582d5f2d429f904810b81cd0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathEffect: {fileID: 8741042865215973671, guid: c0b8ab2df6b32a549bd92f472fa758be,
+    type: 3}
+  hp: 100
+  moveSpeed: 7
+  baseDamage: 1
+  scoreValue: 1
