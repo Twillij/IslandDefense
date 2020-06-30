@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Rigidbody))]
 public class GunControllerScript : MonoBehaviour
 {
     public float ammo = 5;
@@ -61,8 +63,8 @@ public class GunControllerScript : MonoBehaviour
     private void Start()
     {
         SetScreenCentrePoint();
-
         defaultRotation = this.transform.rotation;
+        GetComponent<Rigidbody>().useGravity = false;
     }
 
     private void Update()
