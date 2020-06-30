@@ -1,18 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnergyBar : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Image energyBar;
 
-    // Update is called once per frame
-    void Update()
+    public float startEnergy = 100;
+    public float energy;
+
+    public void UseLaser()
     {
-        
+        energyBar.fillAmount = energy/startEnergy;
     }
 }
