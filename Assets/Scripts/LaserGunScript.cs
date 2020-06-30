@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class LaserGunScript : MonoBehaviour
 {
+    public LineRenderer lineRenderer;
+    public ParticleSystem impactEffect;
+    public Light impactLight;
+    public Transform firePoint;
+    public Transform endPoint;
+
     public float damage = 10;
     public float maxAmmo = 100;
     public float usageRate = 1;
@@ -17,6 +23,15 @@ public class LaserGunScript : MonoBehaviour
         {
             return;
         }
+
+        if (!lineRenderer.enabled)
+        {
+            lineRenderer.enabled = true;
+            impactEffect.Play();
+            impactLight.enabled = true;
+        }
+        lineRenderer.SetPosition(0, firePoint.position);
+        lineRenderer.SetPosition(1, endPoint.position);
 
         Ray ray = new Ray(this.transform.position, this.transform.forward);
         RaycastHit[] hitObjects = Physics.RaycastAll(ray);
