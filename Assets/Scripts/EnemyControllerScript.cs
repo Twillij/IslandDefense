@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class EnemyControllerScript : MonoBehaviour
 {
+    public GameObject deathEffect;
+
     public float hp = 100;
     public float moveSpeed = 10;
     public float baseDamage = 0;
@@ -39,6 +41,7 @@ public class EnemyControllerScript : MonoBehaviour
     {
         ScoreManagerScript scoreKeeper = FindObjectOfType<ScoreManagerScript>();
         scoreKeeper.score += scoreValue;
+        GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(this.gameObject);
     }
 
