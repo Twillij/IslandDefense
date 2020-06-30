@@ -6,15 +6,18 @@ public class EnemySpawnerScript : MonoBehaviour
 {
     public GameObject target;
     public GameObject enemy;
-    public float enemyBaseHP;
+    public float enemyBaseHP = 100;
+    public float enemyHPMultiplier = 1;
     public float innerSpawnRadius = 20;
     public float outerSpawnRadius = 30;
 
     public bool timerOn = true;
+    public float baseSpawnRate = 1.15f;
+    public float spawnRateMultiplier = 1;
     public float timeInterval = 1;
-    public int spawnCount = 1;
 
     private float timer;
+    private float spawnRate = 0;
 
     public void SpawnEnemy()
     {
@@ -38,17 +41,18 @@ public class EnemySpawnerScript : MonoBehaviour
         // spawn the enemy and set its position
         GameObject newEnemy = Instantiate(enemy);
         newEnemy.transform.position = spawnPos;
-        newEnemy.GetComponent<EnemyControllerScript>().hp = enemyBaseHP;
+        newEnemy.GetComponent<EnemyControllerScript>().hp = enemyBaseHP * enemyHPMultiplier;
         newEnemy.GetComponent<EnemyControllerScript>().SetTarget(target);
         newEnemy.transform.SetParent(this.transform);
     }
 
     private void OnValidate()
     {
+        enemyBaseHP = Mathf.Max(0, enemyBaseHP);
+        enemyHPMultiplier = Mathf.Max(0, enemyHPMultiplier);
         innerSpawnRadius = Mathf.Max(0, innerSpawnRadius);
         outerSpawnRadius = Mathf.Max(innerSpawnRadius, outerSpawnRadius);
         timeInterval = Mathf.Max(0, timeInterval);
-        spawnCount = Mathf.Max(0, spawnCount);
     }
 
     private void Start()
@@ -64,8 +68,12 @@ public class EnemySpawnerScript : MonoBehaviour
 
             if (timer < 0)
             {
-                for (int i = 0; i < spawnCount; ++i)
+                spawnRate += baseSpawnRate * spawnRateMultiplier;
+
+                for (int i = 0; i < (int)spawnRate; ++i)
                     SpawnEnemy();
+
+                spawnRate -= (int)spawnRate;
 
                 timer = timeInterval;
             }
