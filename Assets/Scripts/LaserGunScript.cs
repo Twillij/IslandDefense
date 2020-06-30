@@ -6,7 +6,7 @@ public class LaserGunScript : MonoBehaviour
 {
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
-    public Light impactLight;
+    //public Light impactLight;
     public Transform firePoint;
     public Transform endPoint;
 
@@ -21,6 +21,9 @@ public class LaserGunScript : MonoBehaviour
     {
         if (ammo < 0)
         {
+            lineRenderer.enabled = false;
+            impactEffect.Stop();
+            //impactLight.enabled = true;
             return;
         }
 
@@ -28,7 +31,7 @@ public class LaserGunScript : MonoBehaviour
         {
             lineRenderer.enabled = true;
             impactEffect.Play();
-            impactLight.enabled = true;
+            //impactLight.enabled = true;
         }
         lineRenderer.SetPosition(0, firePoint.position);
         lineRenderer.SetPosition(1, endPoint.position);
@@ -68,6 +71,12 @@ public class LaserGunScript : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Fire();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            lineRenderer.enabled = false;
+            impactEffect.Play();
+            //impactLight.enabled = false;
         }
         else
         {
