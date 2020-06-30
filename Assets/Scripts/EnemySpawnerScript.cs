@@ -7,14 +7,14 @@ public class EnemySpawnerScript : MonoBehaviour
     public GameObject target;
     public GameObject enemy;
     public float enemyBaseHP = 100;
-    public float enemyHPMultiplier = 1;
     public float innerSpawnRadius = 20;
     public float outerSpawnRadius = 30;
-
-    public bool timerOn = true;
     public float baseSpawnRate = 1.15f;
-    public float spawnRateMultiplier = 1;
     public float timeInterval = 1;
+
+    public bool timerOn { get; set; }
+    public float enemyHPMultiplier { get; set; }
+    public float spawnRateMultiplier { get; set; }
 
     private float timer;
     private float spawnRate = 0;
@@ -38,7 +38,7 @@ public class EnemySpawnerScript : MonoBehaviour
         spawnPos.y = this.transform.position.y;
         spawnPos.z = Mathf.Sqrt(posZSqr) * sign[Random.Range(0, sign.Length)];
 
-        // spawn the enemy and set its position
+        // spawn the enemy and set its parameters
         GameObject newEnemy = Instantiate(enemy);
         newEnemy.transform.position = spawnPos;
         newEnemy.GetComponent<EnemyControllerScript>().hp = enemyBaseHP * enemyHPMultiplier;

@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/RickScene.unity
+    guid: 73aca64dec8ffea4dbcb92bb6036d1fa
   m_configObjects: {}

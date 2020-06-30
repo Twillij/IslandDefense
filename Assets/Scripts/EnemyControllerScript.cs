@@ -6,13 +6,21 @@ using UnityEngine;
 public class EnemyControllerScript : MonoBehaviour
 {
     public GameObject deathEffect;
-
-    public float hp = 100;
     public float moveSpeed = 10;
     public float baseDamage = 0;
     public float scoreValue = 0;
 
+    public float hp { get; set; }
+
     private GameObject target;
+
+    public void TakeDamage(float damage)
+    {
+        hp -= damage;
+
+        if (hp <= 0)
+            ShotDown();
+    }
 
     public void SetTarget(GameObject target)
     {
@@ -47,7 +55,6 @@ public class EnemyControllerScript : MonoBehaviour
 
     private void OnValidate()
     {
-        hp = Mathf.Max(0, hp);
         moveSpeed = Mathf.Max(0, moveSpeed);
         baseDamage = Mathf.Max(0, baseDamage);
     }
@@ -60,18 +67,14 @@ public class EnemyControllerScript : MonoBehaviour
     private void Update()
     {
         SeekTarget();
-
-        if (hp < 0)
-            ShotDown();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.root.CompareTag(target.tag))
+        if (other.transform.root.CompareTag("Player"))
         {
-            //Debug.Log("triggered");
+            target.GetComponent<PlayerScript>().ChangeLife(-1);
+            Destroy(this.gameObject);
         }
-
-        Destroy(this.gameObject);
     }
 }
