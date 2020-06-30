@@ -6,6 +6,7 @@ public class EnemySpawnerScript : MonoBehaviour
 {
     public GameObject target;
     public GameObject enemy;
+    public float enemyBaseHP;
     public float innerSpawnRadius = 20;
     public float outerSpawnRadius = 30;
 
@@ -37,6 +38,7 @@ public class EnemySpawnerScript : MonoBehaviour
         // spawn the enemy and set its position
         GameObject newEnemy = Instantiate(enemy);
         newEnemy.transform.position = spawnPos;
+        newEnemy.GetComponent<EnemyControllerScript>().hp = enemyBaseHP;
         newEnemy.GetComponent<EnemyControllerScript>().SetTarget(target);
         newEnemy.transform.SetParent(this.transform);
     }

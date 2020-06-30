@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LaserGunScript : MonoBehaviour
 {
+    public float damage = 10;
     public float maxAmmo = 100;
     public float usageRate = 1;
     public float rechargeRate = 5;
@@ -12,13 +13,18 @@ public class LaserGunScript : MonoBehaviour
 
     private void Fire()
     {
+        if (ammo < 0)
+        {
+            return;
+        }
+
         Ray ray = new Ray(this.transform.position, this.transform.forward);
         RaycastHit[] hitObjects = Physics.RaycastAll(ray);
 
         for (int i = 0; i < hitObjects.Length; ++i)
         {
             if (hitObjects[i].transform.CompareTag("Enemy"))
-                hitObjects[i].transform.GetComponent<EnemyControllerScript>().ShotDown();
+                hitObjects[i].transform.GetComponent<EnemyControllerScript>().hp -= damage;
         }
 
         ammo -= usageRate;
