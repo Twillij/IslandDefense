@@ -9,7 +9,6 @@ public class EnemyControllerScript : MonoBehaviour
     public float baseDamage;
 
     private GameObject target;
-    private Collider col;
 
     public void SetTarget(GameObject target)
     {
@@ -42,8 +41,7 @@ public class EnemyControllerScript : MonoBehaviour
 
     private void Start()
     {
-        col = GetComponent<Collider>();
-        col.isTrigger = true;
+        GetComponent<Collider>().isTrigger = true;
     }
 
     private void Update()
@@ -51,12 +49,11 @@ public class EnemyControllerScript : MonoBehaviour
         SeekTarget();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.collider.CompareTag(target.tag))
+        if (other.transform.root.CompareTag(target.tag))
         {
-            // deal damage to island/tower
-            
+            //Debug.Log("triggered");
         }
 
         Destroy(this.gameObject);

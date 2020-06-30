@@ -38,6 +38,7 @@ public class EnemySpawnerScript : MonoBehaviour
         GameObject newEnemy = Instantiate(enemy);
         newEnemy.transform.position = spawnPos;
         newEnemy.GetComponent<EnemyControllerScript>().SetTarget(target);
+        newEnemy.transform.SetParent(this.transform);
     }
 
     private void OnValidate()
