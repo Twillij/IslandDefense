@@ -7,6 +7,7 @@ public class EnemyControllerScript : MonoBehaviour
 {
     public GameObject deathEffect;
     public float moveSpeed = 10;
+    public float rotateSpeed = 1;
     public float baseDamage = 0;
     public float scoreValue = 0;
 
@@ -36,13 +37,17 @@ public class EnemyControllerScript : MonoBehaviour
         }
 
         // look at the target
-        this.transform.LookAt(target.transform);
+        //this.transform.LookAt(target.transform);
 
         // calculate the direction from itself to the target
         Vector3 dir = Vector3.Normalize(target.transform.position - this.transform.position);
 
         // translate the object towards the target
         this.transform.position += dir * moveSpeed * Time.deltaTime;
+
+        Vector2 perp = Vector2.Perpendicular(new Vector2(dir.x, dir.z));
+        Vector3 rollAxis = new Vector3(perp.x, 0, perp.y);
+        transform.Rotate(rollAxis, rotateSpeed);
     }
 
     public void ShotDown()

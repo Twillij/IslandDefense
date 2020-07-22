@@ -35,6 +35,7 @@ public class GameManagerScript : MonoBehaviour
     private void Start()
     {
         enemySpawner = FindObjectOfType<EnemySpawnerScript>();
+        Startevel();
     }
 
     private void Update()
